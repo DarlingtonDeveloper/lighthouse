@@ -1,0 +1,1227 @@
+{
+  "nodes": [
+    {
+      "id": "local-1",
+      "kind": "agent",
+      "title": "lighthouse",
+      "body": "Auto-ingested from https://github.com/DarlingtonDeveloper/lighthouse",
+      "tags": [
+        "ingested",
+        "darlingtondeveloper",
+        "lighthouse"
+      ],
+      "importance": 1,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-2",
+      "kind": "file",
+      "title": "docs/API.md",
+      "tags": [
+        "doc"
+      ],
+      "importance": 0.7,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-3",
+      "kind": "file",
+      "title": "docs/ARCHITECTURE.md",
+      "tags": [
+        "doc"
+      ],
+      "importance": 0.7,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-4",
+      "kind": "file",
+      "title": "docs/CONTRIBUTING.md",
+      "tags": [
+        "doc"
+      ],
+      "importance": 0.7,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-5",
+      "kind": "file",
+      "title": "docs/DEPLOYMENT.md",
+      "tags": [
+        "doc"
+      ],
+      "importance": 0.7,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-6",
+      "kind": "file",
+      "title": "README.md",
+      "tags": [
+        "doc"
+      ],
+      "importance": 0.7,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-7",
+      "kind": "constraint",
+      "title": "package.json",
+      "tags": [
+        "config"
+      ],
+      "importance": 0.65,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-8",
+      "kind": "module",
+      "title": "app",
+      "tags": [
+        "module"
+      ],
+      "importance": 0.75,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-9",
+      "kind": "module",
+      "title": "components",
+      "tags": [
+        "module"
+      ],
+      "importance": 0.75,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-10",
+      "kind": "module",
+      "title": "components.json",
+      "tags": [
+        "module"
+      ],
+      "importance": 0.75,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-11",
+      "kind": "module",
+      "title": "docs",
+      "tags": [
+        "module"
+      ],
+      "importance": 0.75,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-12",
+      "kind": "module",
+      "title": "lib",
+      "tags": [
+        "module"
+      ],
+      "importance": 0.75,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-13",
+      "kind": "module",
+      "title": "next.config.ts",
+      "tags": [
+        "module"
+      ],
+      "importance": 0.75,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-14",
+      "kind": "module",
+      "title": "package-lock.json",
+      "tags": [
+        "module"
+      ],
+      "importance": 0.75,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-15",
+      "kind": "module",
+      "title": "package.json",
+      "tags": [
+        "module"
+      ],
+      "importance": 0.75,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-16",
+      "kind": "module",
+      "title": "postcss.config.mjs",
+      "tags": [
+        "module"
+      ],
+      "importance": 0.75,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-17",
+      "kind": "module",
+      "title": "README.md",
+      "tags": [
+        "module"
+      ],
+      "importance": 0.75,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-18",
+      "kind": "file",
+      "title": "app/api/briefing/[domain]/route.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-19",
+      "kind": "file",
+      "title": "app/api/discover/route.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-20",
+      "kind": "file",
+      "title": "app/api/prospects/route.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-21",
+      "kind": "file",
+      "title": "app/api/prospects/[domain]/route.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-22",
+      "kind": "file",
+      "title": "app/layout.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-23",
+      "kind": "file",
+      "title": "app/page.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-24",
+      "kind": "file",
+      "title": "app/prospects/[domain]/dashboard-content.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-25",
+      "kind": "file",
+      "title": "app/prospects/[domain]/error.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-26",
+      "kind": "file",
+      "title": "app/prospects/[domain]/loading.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-27",
+      "kind": "file",
+      "title": "app/prospects/[domain]/page.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-28",
+      "kind": "file",
+      "title": "components/architecture-panel.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-29",
+      "kind": "file",
+      "title": "components/cwv-indicator.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-30",
+      "kind": "file",
+      "title": "components/deal-score-badge.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-31",
+      "kind": "file",
+      "title": "components/performance-panel.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-32",
+      "kind": "file",
+      "title": "components/pipeline-progress.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-33",
+      "kind": "file",
+      "title": "components/prospect-card.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-34",
+      "kind": "file",
+      "title": "components/qualification-panel.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-35",
+      "kind": "file",
+      "title": "components/talking-points-panel.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-36",
+      "kind": "file",
+      "title": "components/tech-stack-panel.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-37",
+      "kind": "file",
+      "title": "components/ui/alert.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-38",
+      "kind": "file",
+      "title": "components/ui/badge.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-39",
+      "kind": "file",
+      "title": "components/ui/button.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-40",
+      "kind": "file",
+      "title": "components/ui/card.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-41",
+      "kind": "file",
+      "title": "components/ui/input.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-42",
+      "kind": "file",
+      "title": "components/ui/progress.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-43",
+      "kind": "file",
+      "title": "components/ui/separator.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-44",
+      "kind": "file",
+      "title": "components/ui/skeleton.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-45",
+      "kind": "file",
+      "title": "components/ui/tabs.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-46",
+      "kind": "file",
+      "title": "components/url-input.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-47",
+      "kind": "file",
+      "title": "components/value-engineering-panel.tsx",
+      "tags": [
+        "tsx"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-48",
+      "kind": "file",
+      "title": "lib/cortex-store-pipeline.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-49",
+      "kind": "file",
+      "title": "lib/cortex.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-50",
+      "kind": "file",
+      "title": "lib/fetcher.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-51",
+      "kind": "file",
+      "title": "lib/gemini/design-architecture.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-52",
+      "kind": "file",
+      "title": "lib/gemini/detect-tech-stack.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-53",
+      "kind": "file",
+      "title": "lib/gemini/engineer-value.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-54",
+      "kind": "file",
+      "title": "lib/gemini/index.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-55",
+      "kind": "file",
+      "title": "lib/gemini/qualify-prospect.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-56",
+      "kind": "file",
+      "title": "lib/gemini/__tests__/design-architecture.test.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-57",
+      "kind": "file",
+      "title": "lib/gemini/__tests__/detect-tech-stack.test.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-58",
+      "kind": "file",
+      "title": "lib/gemini/__tests__/engineer-value.test.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-59",
+      "kind": "file",
+      "title": "lib/gemini/__tests__/qualify-prospect.test.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-60",
+      "kind": "file",
+      "title": "lib/pagespeed.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-61",
+      "kind": "file",
+      "title": "lib/schemas.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-62",
+      "kind": "file",
+      "title": "lib/utils.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-63",
+      "kind": "file",
+      "title": "lib/__tests__/cortex-store-pipeline.test.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-64",
+      "kind": "file",
+      "title": "lib/__tests__/cortex.test.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-65",
+      "kind": "file",
+      "title": "lib/__tests__/fetcher.test.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-66",
+      "kind": "file",
+      "title": "lib/__tests__/pagespeed.test.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-67",
+      "kind": "file",
+      "title": "lib/__tests__/schemas.test.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-68",
+      "kind": "file",
+      "title": "lib/__tests__/utils.test.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-69",
+      "kind": "file",
+      "title": "next.config.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-70",
+      "kind": "file",
+      "title": "vitest.config.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-71",
+      "kind": "file",
+      "title": "__tests__/integration/data-flow.test.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    },
+    {
+      "id": "local-72",
+      "kind": "file",
+      "title": "__tests__/integration/pipeline.test.ts",
+      "tags": [
+        "ts"
+      ],
+      "importance": 0.5,
+      "agent": "darlingtondeveloper-lighthouse",
+      "edges": 0
+    }
+  ],
+  "edges": [
+    {
+      "source": "local-1",
+      "target": "local-2",
+      "relation": "documents",
+      "weight": 0.7
+    },
+    {
+      "source": "local-1",
+      "target": "local-3",
+      "relation": "documents",
+      "weight": 0.7
+    },
+    {
+      "source": "local-1",
+      "target": "local-4",
+      "relation": "documents",
+      "weight": 0.7
+    },
+    {
+      "source": "local-1",
+      "target": "local-5",
+      "relation": "documents",
+      "weight": 0.7
+    },
+    {
+      "source": "local-1",
+      "target": "local-6",
+      "relation": "documents",
+      "weight": 0.7
+    },
+    {
+      "source": "local-1",
+      "target": "local-7",
+      "relation": "defines",
+      "weight": 0.65
+    },
+    {
+      "source": "local-1",
+      "target": "local-8",
+      "relation": "owns",
+      "weight": 0.8
+    },
+    {
+      "source": "local-1",
+      "target": "local-9",
+      "relation": "owns",
+      "weight": 0.8
+    },
+    {
+      "source": "local-1",
+      "target": "local-10",
+      "relation": "owns",
+      "weight": 0.8
+    },
+    {
+      "source": "local-1",
+      "target": "local-11",
+      "relation": "owns",
+      "weight": 0.8
+    },
+    {
+      "source": "local-1",
+      "target": "local-12",
+      "relation": "owns",
+      "weight": 0.8
+    },
+    {
+      "source": "local-1",
+      "target": "local-13",
+      "relation": "owns",
+      "weight": 0.8
+    },
+    {
+      "source": "local-1",
+      "target": "local-14",
+      "relation": "owns",
+      "weight": 0.8
+    },
+    {
+      "source": "local-1",
+      "target": "local-15",
+      "relation": "owns",
+      "weight": 0.8
+    },
+    {
+      "source": "local-1",
+      "target": "local-16",
+      "relation": "owns",
+      "weight": 0.8
+    },
+    {
+      "source": "local-1",
+      "target": "local-17",
+      "relation": "owns",
+      "weight": 0.8
+    },
+    {
+      "source": "local-8",
+      "target": "local-18",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-8",
+      "target": "local-19",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-8",
+      "target": "local-20",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-8",
+      "target": "local-21",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-8",
+      "target": "local-22",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-8",
+      "target": "local-23",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-8",
+      "target": "local-24",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-8",
+      "target": "local-25",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-8",
+      "target": "local-26",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-8",
+      "target": "local-27",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-9",
+      "target": "local-28",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-9",
+      "target": "local-29",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-9",
+      "target": "local-30",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-9",
+      "target": "local-31",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-9",
+      "target": "local-32",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-9",
+      "target": "local-33",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-9",
+      "target": "local-34",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-9",
+      "target": "local-35",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-9",
+      "target": "local-36",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-9",
+      "target": "local-37",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-9",
+      "target": "local-38",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-9",
+      "target": "local-39",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-9",
+      "target": "local-40",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-9",
+      "target": "local-41",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-9",
+      "target": "local-42",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-9",
+      "target": "local-43",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-9",
+      "target": "local-44",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-9",
+      "target": "local-45",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-9",
+      "target": "local-46",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-9",
+      "target": "local-47",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-12",
+      "target": "local-48",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-12",
+      "target": "local-49",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-12",
+      "target": "local-50",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-12",
+      "target": "local-51",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-12",
+      "target": "local-52",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-12",
+      "target": "local-53",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-12",
+      "target": "local-54",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-12",
+      "target": "local-55",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-12",
+      "target": "local-56",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-12",
+      "target": "local-57",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-12",
+      "target": "local-58",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-12",
+      "target": "local-59",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-12",
+      "target": "local-60",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-12",
+      "target": "local-61",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-12",
+      "target": "local-62",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-12",
+      "target": "local-63",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-12",
+      "target": "local-64",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-12",
+      "target": "local-65",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-12",
+      "target": "local-66",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-12",
+      "target": "local-67",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-12",
+      "target": "local-68",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-13",
+      "target": "local-69",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-1",
+      "target": "local-70",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-1",
+      "target": "local-71",
+      "relation": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "local-1",
+      "target": "local-72",
+      "relation": "contains",
+      "weight": 0.5
+    }
+  ]
+}
