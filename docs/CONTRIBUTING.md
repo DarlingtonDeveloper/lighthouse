@@ -176,7 +176,7 @@ export async function analyseNewStage(
 ) {
   try {
     const { object } = await generateObject({
-      model: google("gemini-2.5-flash-preview-05-20"),
+      model: google("gemini-2.5-pro-preview-05-20"),
       schema: NewStageSchema,
       prompt: `Your prompt here for ${domain}...`,
     });

@@ -29,7 +29,7 @@ export async function designArchitecture(
 ): Promise<Architecture> {
   try {
     const { object } = await generateObject({
-      model: google("gemini-2.5-flash-preview-05-20"),
+      model: google("gemini-2.5-pro"),
       schema: ArchitectureSchema,
       prompt: `You are a senior Vercel Solutions Architect designing architecture diagrams and a proof-of-concept proposal for the prospect "${domain}".
 
@@ -46,6 +46,16 @@ Requirements:
 - Use descriptive node IDs (e.g. "CDN[Cloudflare CDN]", "Origin[AWS ECS]", "CMS[Contentful]").
 - If a component was not detected, do not include it -- only show what was actually found.
 - Keep the diagram clean and readable. Group related components vertically where possible.
+
+CRITICAL Mermaid syntax rules -- you MUST follow these:
+- NEVER use parentheses () inside node labels. Use dashes or commas instead. BAD: "Node[Express.js (BFF)]". GOOD: "Node[Express.js - BFF]".
+- NEVER use ampersands & inside labels. Use "and" or "+" instead.
+- NEVER use angle brackets < > inside labels.
+- NEVER use double quotes inside labels. Use single quotes if needed.
+- NEVER use semicolons inside labels. Use commas instead.
+- NEVER wrap the diagram in markdown code fences.
+- Keep node labels SHORT -- max 40 characters. Put details in subgraph titles or edge labels instead.
+- Use simple alphanumeric node IDs (e.g. "EdgeNet", "NextApp", "NASAAPI") -- avoid special characters in IDs.
 
 --- TASK 2: TARGET ARCHITECTURE DIAGRAM ---
 
@@ -66,6 +76,7 @@ Requirements:
 - Include Edge Middleware as a node if the prospect would benefit from A/B testing, geo-routing, authentication at the edge, or gradual migration (reverse proxy).
 - Use descriptive node IDs matching the current architecture where applicable so the viewer can see what changed.
 - Annotate expected performance improvements on relevant edges or nodes (e.g. "TTFB < 50ms", "Global edge delivery").
+- Follow the same CRITICAL Mermaid syntax rules from Task 1: no parentheses, ampersands, angle brackets, or double quotes inside node labels. Keep labels under 40 characters.
 
 --- TASK 3: PROOF OF CONCEPT PROPOSAL ---
 

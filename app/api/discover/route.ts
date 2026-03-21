@@ -27,9 +27,6 @@ export async function POST(req: NextRequest) {
 
   const encoder = new TextEncoder()
 
-  // Collect pipeline results for background storage via waitUntil
-  let storagePromise: Promise<void> | null = null
-
   const stream = new ReadableStream({
     start(controller) {
       const send = (stage: string, data: Record<string, unknown>) => {
@@ -86,8 +83,11 @@ export async function POST(req: NextRequest) {
           )
           send("architecture", { status: "complete", data: architecture })
 
-          // Prepare background Cortex storage (runs via waitUntil after stream closes)
-          storagePromise = storeInCortex(domain, url, {
+          // Store results in Cortex before sending completion.
+          // On Vercel, waitUntil would handle this after the response, but
+          // locally waitUntil is a no-op, so we await inline to ensure
+          // data is persisted before the client navigates to the prospect page.
+          await storeInCortex(domain, url, {
             techStack,
             performance,
             qualification,
@@ -95,7 +95,7 @@ export async function POST(req: NextRequest) {
             architecture,
           })
 
-          // Pipeline complete — send result immediately without waiting on Cortex
+          // Pipeline complete
           send("complete", {
             domain,
             url,
@@ -118,20 +118,11 @@ export async function POST(req: NextRequest) {
     },
   })
 
-  const response = new Response(stream, {
+  return new Response(stream, {
     headers: {
       "Content-Type": "text/event-stream",
       "Cache-Control": "no-cache",
       Connection: "keep-alive",
     },
   })
-
-  // Background task: store results in Cortex via Fluid Compute's waitUntil.
-  // Runs after the SSE stream closes. The function instance stays alive to
-  // complete this work without the user waiting for it.
-  if (storagePromise) {
-    waitUntil(storagePromise)
-  }
-
-  return response
 }

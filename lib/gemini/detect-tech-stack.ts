@@ -20,7 +20,7 @@ export async function detectTechStack(
     const truncatedHtml = html.slice(0, 60_000)
 
     const { object } = await generateObject({
-      model: google("gemini-2.5-flash-preview-05-20"),
+      model: google("gemini-2.5-pro"),
       schema: TechStackSchema,
       prompt: `You are a Vercel Solutions Architect conducting technical discovery on the website "${domain}".
 

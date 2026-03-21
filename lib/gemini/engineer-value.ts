@@ -33,7 +33,7 @@ export async function engineerValue(
 ): Promise<ValueEngineering> {
   try {
     const { object } = await generateObject({
-      model: google("gemini-2.5-flash-preview-05-20"),
+      model: google("gemini-2.5-pro"),
       schema: ValueEngineeringSchema,
       system: `You are a senior Vercel Solutions Architect who has personally led 50+ enterprise migration deals. You write with the authority of someone who has built ROI models for Fortune 500 companies and defended them in CFO meetings. Your analysis is precise, data-driven, and persuasive -- never hand-wavy. You cite specific research, name concrete numbers, and tailor every recommendation to the prospect's vertical, tech stack, and competitive position.
 

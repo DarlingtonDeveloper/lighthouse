@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { cortexSearch } from '@/lib/cortex'
+import { cortexSearch, cortexNodes } from '@/lib/cortex'
 import { entityTag } from '@/lib/utils'
 import { DashboardContent } from './dashboard-content'
 
@@ -33,11 +33,31 @@ export default async function ProspectPage({
   const decodedDomain = decodeURIComponent(domain)
 
   const tag = entityTag(decodedDomain)
-  const { results } = await cortexSearch(decodedDomain, 30)
 
-  const filtered = results.filter(
-    (node: { tags?: string[] }) => node.tags?.includes(tag),
-  )
+  // Fetch nodes from multiple sources to ensure all kinds are captured.
+  // Semantic search alone can miss node types that don't match the query well.
+  const [searchResults, ...kindResults] = await Promise.all([
+    cortexSearch(decodedDomain, 50),
+    cortexNodes("stack-detection", 50),
+    cortexNodes("performance-snapshot", 50),
+    cortexNodes("qualification-score", 50),
+    cortexNodes("value-proposition", 50),
+    cortexNodes("poc-scope", 50),
+    cortexNodes("prospect", 50),
+  ])
+
+  // Merge all nodes, deduplicate by id, filter by entity tag
+  const allNodes = [
+    ...searchResults.results,
+    ...kindResults.flatMap((r) => r.nodes),
+  ]
+  const seen = new Set<string>()
+  const filtered = allNodes.filter((node: any) => {
+    const id = node.id
+    if (!id || seen.has(id)) return false
+    seen.add(id)
+    return node.tags?.includes(tag)
+  })
 
   if (filtered.length === 0) {
     return (
@@ -59,7 +79,7 @@ export default async function ProspectPage({
   // Group by kind
   const grouped: Record<string, any[]> = {}
   for (const node of filtered) {
-    const kind = node.kind as string
+    const kind = (node.kind as string).toLowerCase()
     if (!grouped[kind]) grouped[kind] = []
     grouped[kind].push(node)
   }
@@ -81,8 +101,9 @@ export default async function ProspectPage({
     architecture: safeParse<Architecture>(architectureNode?.body),
   }
 
-  const dealScore = data.qualification?.deal_score ?? prospectNode?.metadata?.deal_score ?? null
-  const recommendedAction = data.qualification?.recommended_action ?? prospectNode?.metadata?.recommended_action ?? null
+  const prospectBody = safeParse<any>(prospectNode?.body)
+  const dealScore = data.qualification?.deal_score ?? prospectBody?.deal_score ?? null
+  const recommendedAction = data.qualification?.recommended_action ?? prospectBody?.recommended_action ?? null
 
   return (
     <DashboardContent

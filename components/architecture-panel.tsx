@@ -13,6 +13,38 @@ interface ArchitecturePanelProps {
   data: Architecture
 }
 
+/**
+ * Sanitize LLM-generated Mermaid to fix common syntax errors.
+ * Mermaid is strict — unescaped special chars in labels break parsing.
+ */
+function sanitizeMermaid(raw: string): string {
+  return raw
+    .split("\n")
+    .map((line) => {
+      // Strip markdown fences (```mermaid / ```)
+      if (/^\s*```/.test(line)) return ""
+      // Fix labels with special chars inside [...] or (...)
+      // Replace problematic chars inside bracket labels: & < > # ; "
+      return line.replace(
+        /(\[|{)([^\]{}]+)(\]|})/g,
+        (_, open, content, close) => {
+          const cleaned = content
+            .replace(/&/g, "+")
+            .replace(/[<>]/g, "-")
+            .replace(/"/g, "'")
+            .replace(/#/g, "")
+            .replace(/;/g, ",")
+            // Parentheses inside labels break Mermaid — use unicode
+            .replace(/\(/g, "&#40;")
+            .replace(/\)/g, "&#41;")
+          return `${open}${cleaned}${close}`
+        }
+      )
+    })
+    .filter(Boolean)
+    .join("\n")
+}
+
 function MermaidDiagram({ chart }: { chart: string }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const renderedRef = useRef(false)
@@ -21,11 +53,14 @@ function MermaidDiagram({ chart }: { chart: string }) {
     if (!containerRef.current || renderedRef.current || !chart) return
     renderedRef.current = true
 
+    const sanitized = sanitizeMermaid(chart)
+
     try {
       const mermaid = (await import("mermaid")).default
       mermaid.initialize({
         startOnLoad: false,
         theme: "dark",
+        securityLevel: "loose",
         themeVariables: {
           primaryColor: "#1e293b",
           primaryTextColor: "#e2e8f0",
@@ -38,17 +73,17 @@ function MermaidDiagram({ chart }: { chart: string }) {
       })
 
       const id = `mermaid-${Math.random().toString(36).slice(2, 9)}`
-      const { svg } = await mermaid.render(id, chart)
+      const { svg } = await mermaid.render(id, sanitized)
       if (containerRef.current) {
         containerRef.current.innerHTML = svg
       }
     } catch {
-      // Render failed — show raw code
+      // Render failed — show raw code as fallback
       if (containerRef.current) {
         const pre = document.createElement("pre")
-        pre.className = "text-xs leading-relaxed"
+        pre.className = "text-xs leading-relaxed whitespace-pre-wrap"
         const code = document.createElement("code")
-        code.textContent = chart
+        code.textContent = sanitized
         pre.appendChild(code)
         containerRef.current.innerHTML = ""
         containerRef.current.appendChild(pre)

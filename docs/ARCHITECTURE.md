@@ -209,11 +209,11 @@ The prospect dashboard page (`app/prospects/[domain]/page.tsx`) is a server comp
 
 ### How Gemini Is Used
 
-Lighthouse uses Google's Gemini 2.5 Flash model (`gemini-2.5-flash-preview-05-20`) through the Vercel AI SDK (`ai` package with `@ai-sdk/google` provider). All four AI calls use the `generateObject` function, which produces a typed object conforming to a Zod schema:
+Lighthouse uses Google's Gemini 2.5 Flash model (`gemini-2.5-pro-preview-05-20`) through the Vercel AI SDK (`ai` package with `@ai-sdk/google` provider). All four AI calls use the `generateObject` function, which produces a typed object conforming to a Zod schema:
 
 ```typescript
 const { object } = await generateObject({
-  model: google("gemini-2.5-flash-preview-05-20"),
+  model: google("gemini-2.5-pro-preview-05-20"),
   schema: SomeZodSchema,
   prompt: "...",       // user prompt
   system: "...",       // system prompt (used by engineerValue)

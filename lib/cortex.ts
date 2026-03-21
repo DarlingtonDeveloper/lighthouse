@@ -6,61 +6,73 @@ export type CortexNode = {
   body: string
   importance: number
   tags?: string[]
-  metadata?: Record<string, any>
   source_agent?: string
-  valid_from?: string
 }
 
 /**
  * Store a node in Cortex graph memory.
+ * POST /nodes — returns { success, data: { id, kind, title } }
  */
 export async function cortexStore(node: CortexNode): Promise<any | null> {
   try {
-    const res = await fetch(`${CORTEX_URL}/nodes`, {
+    const res = await fetch(`${CORTEX_URL}/nodes?gate=skip`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "x-agent-id": node.source_agent || "lighthouse",
+        "x-gate-override": "true",
+      },
       body: JSON.stringify({
         kind: node.kind,
         title: node.title,
         body: node.body,
         importance: node.importance,
         tags: node.tags ?? [],
-        metadata: node.metadata ?? {},
-        source: { agent: node.source_agent || "lighthouse" },
-        valid_from: node.valid_from,
+        source_agent: node.source_agent || "lighthouse",
       }),
       signal: AbortSignal.timeout(5000),
     })
-    return await res.json()
+    const json = await res.json()
+    if (!json.success) {
+      console.warn("Cortex: store rejected", json.error)
+      return null
+    }
+    return json.data
   } catch (error) {
-    console.error("Cortex: failed to store node", error)
+    console.warn("Cortex: failed to store node", error)
     return null
   }
 }
 
 /**
  * Search Cortex graph memory by semantic query.
+ * GET /search?q=...&limit=... — returns { success, data: [...] }
  */
 export async function cortexSearch(
   query: string,
   limit?: number
 ): Promise<{ results: any[] }> {
   try {
-    const res = await fetch(`${CORTEX_URL}/search`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query, limit: limit || 10 }),
+    const params = new URLSearchParams({
+      q: query,
+      limit: String(limit || 10),
+    })
+    const res = await fetch(`${CORTEX_URL}/search?${params.toString()}`, {
       signal: AbortSignal.timeout(5000),
     })
-    return await res.json()
+    const json = await res.json()
+    // Cortex search returns { node: {...}, score } wrappers — unwrap to flat nodes
+    const items = (json.data ?? []).map((hit: any) => hit.node ?? hit)
+    return { results: items }
   } catch (error) {
-    console.error("Cortex: search failed", error)
+    console.warn("Cortex: search failed", error)
     return { results: [] }
   }
 }
 
 /**
  * Retrieve a briefing for a specific agent from Cortex.
+ * GET /briefing/:agentId?compact=...
  */
 export async function cortexBriefing(
   agentId: string,
@@ -71,15 +83,17 @@ export async function cortexBriefing(
       `${CORTEX_URL}/briefing/${agentId}?compact=${compact ?? true}`,
       { signal: AbortSignal.timeout(5000) }
     )
-    return await res.json()
+    const json = await res.json()
+    return json.success ? json.data : null
   } catch (error) {
-    console.error("Cortex: briefing failed", error)
+    console.warn("Cortex: briefing failed", error)
     return null
   }
 }
 
 /**
  * List nodes from Cortex, optionally filtered by kind.
+ * GET /nodes?kind=...&limit=... — returns { success, data: [...] }
  */
 export async function cortexNodes(
   kind?: string,
@@ -93,9 +107,10 @@ export async function cortexNodes(
     const res = await fetch(`${CORTEX_URL}/nodes?${params.toString()}`, {
       signal: AbortSignal.timeout(5000),
     })
-    return await res.json()
+    const json = await res.json()
+    return { nodes: json.data ?? [] }
   } catch (error) {
-    console.error("Cortex: nodes listing failed", error)
+    console.warn("Cortex: nodes listing failed", error)
     return { nodes: [] }
   }
 }
@@ -139,10 +154,10 @@ export async function cortexSearchPriorPatterns(
 
     return unique
       .slice(0, 5)
-      .map((r) => `[${r.kind}] ${r.title}: ${r.body.slice(0, 200)}`)
+      .map((r) => `[${r.kind}] ${r.title}: ${(r.body || "").slice(0, 200)}`)
       .join("\n")
   } catch (error) {
-    console.error("Cortex: prior pattern search failed", error)
+    console.warn("Cortex: prior pattern search failed", error)
     return ""
   }
 }

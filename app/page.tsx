@@ -37,6 +37,11 @@ export default function HomePage() {
     (data: any) => {
       const domain = data?.domain
       if (domain) {
+        try {
+          sessionStorage.setItem(`lighthouse:${domain}`, JSON.stringify(data))
+        } catch {
+          // sessionStorage may be unavailable
+        }
         router.push(`/prospects/${encodeURIComponent(domain)}`)
       }
     },

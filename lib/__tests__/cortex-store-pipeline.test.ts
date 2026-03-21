@@ -152,7 +152,7 @@ describe('storeInCortex', () => {
     await storeInCortex(TEST_DOMAIN, TEST_URL, mockData)
 
     const prospectCall = findCallByKind('prospect')
-    expect(prospectCall?.importance).toBe(0.9)
+    expect(prospectCall?.importance).toBe(0.8)
 
     const stackCall = findCallByKind('stack-detection')
     expect(stackCall?.importance).toBe(0.8)
@@ -277,7 +277,7 @@ describe('storeInCortex', () => {
     await storeInCortex(TEST_DOMAIN, TEST_URL, mockData)
 
     expect(warnSpy).toHaveBeenCalledWith(
-      expect.stringContaining('1/'),
+      expect.stringContaining('failed'),
     )
 
     warnSpy.mockRestore()

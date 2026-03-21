@@ -74,7 +74,7 @@ export async function qualifyProspect(
     const careersHtml = await scrapeCareersPage(domain)
 
     const { object } = await generateObject({
-      model: google("gemini-2.5-flash-preview-05-20"),
+      model: google("gemini-2.5-pro"),
       schema: QualificationSchema,
       prompt: `You are a Vercel enterprise sales qualification analyst. Your job is to honestly assess whether the prospect "${domain}" is a good fit for Vercel enterprise sales outreach.
 

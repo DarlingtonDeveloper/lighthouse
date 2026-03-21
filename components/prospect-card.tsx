@@ -17,7 +17,7 @@ interface ProspectCardProps {
 export function ProspectCard({ prospect }: ProspectCardProps) {
   const meta = prospect.metadata ?? {}
   const domain =
-    meta.domain ?? prospect.title ?? "Unknown"
+    meta.domain ?? prospect.title?.replace("Prospect analysis: ", "") ?? "Unknown"
 
   const dealScore = meta.deal_score ?? meta.dealScore ?? null
   const framework = meta.framework ?? null
