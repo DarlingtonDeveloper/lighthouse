@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
+import { waitUntil } from "@vercel/functions"
 import { extractDomain, isValidPublicUrl } from "@/lib/utils"
 import { fetchPage } from "@/lib/fetcher"
 import { getPerformanceMetrics } from "@/lib/pagespeed"
@@ -26,6 +27,9 @@ export async function POST(req: NextRequest) {
 
   const encoder = new TextEncoder()
 
+  // Collect pipeline results for background storage via waitUntil
+  let storagePromise: Promise<void> | null = null
+
   const stream = new ReadableStream({
     start(controller) {
       const send = (stage: string, data: Record<string, unknown>) => {
@@ -41,7 +45,7 @@ export async function POST(req: NextRequest) {
           const { html, headers } = await fetchPage(url)
           send("fetch", { status: "complete" })
 
-          // Stage 2: Tech stack detection + performance metrics (parallel)
+          // Stage 2+3: Tech stack detection + performance metrics (parallel)
           send("techstack", { status: "running" })
           send("performance", { status: "running" })
           const [techStack, performance] = await Promise.all([
@@ -51,7 +55,7 @@ export async function POST(req: NextRequest) {
           send("techstack", { status: "complete", data: techStack })
           send("performance", { status: "complete", data: performance })
 
-          // Stage 3: Prospect qualification
+          // Stage 4: Prospect qualification
           send("qualification", { status: "running" })
           const qualification = await qualifyProspect(
             domain,
@@ -60,7 +64,7 @@ export async function POST(req: NextRequest) {
           )
           send("qualification", { status: "complete", data: qualification })
 
-          // Stage 4: Value engineering
+          // Stage 5: Value engineering
           send("value", { status: "running" })
           const priorPatterns = await cortexSearchPriorPatterns(techStack)
           const valueEngineering = await engineerValue(
@@ -72,7 +76,7 @@ export async function POST(req: NextRequest) {
           )
           send("value", { status: "complete", data: valueEngineering })
 
-          // Stage 5: Architecture design
+          // Stage 6: Architecture design
           send("architecture", { status: "running" })
           const architecture = await designArchitecture(
             domain,
@@ -82,25 +86,25 @@ export async function POST(req: NextRequest) {
           )
           send("architecture", { status: "complete", data: architecture })
 
-          // Stage 6: Store in Cortex
-          send("storage", { status: "running" })
-          await storeInCortex(domain, url, {
+          // Prepare background Cortex storage (runs via waitUntil after stream closes)
+          storagePromise = storeInCortex(domain, url, {
             techStack,
             performance,
             qualification,
             valueEngineering,
             architecture,
           })
-          send("storage", { status: "complete" })
 
-          // Pipeline complete
+          // Pipeline complete — send result immediately without waiting on Cortex
           send("complete", {
             domain,
+            url,
             techStack,
             performance,
             qualification,
             valueEngineering,
             architecture,
+            timestamp: new Date().toISOString(),
           })
         } catch (error) {
           send("error", {
@@ -114,11 +118,20 @@ export async function POST(req: NextRequest) {
     },
   })
 
-  return new Response(stream, {
+  const response = new Response(stream, {
     headers: {
       "Content-Type": "text/event-stream",
       "Cache-Control": "no-cache",
       Connection: "keep-alive",
     },
   })
+
+  // Background task: store results in Cortex via Fluid Compute's waitUntil.
+  // Runs after the SSE stream closes. The function instance stays alive to
+  // complete this work without the user waiting for it.
+  if (storagePromise) {
+    waitUntil(storagePromise)
+  }
+
+  return response
 }

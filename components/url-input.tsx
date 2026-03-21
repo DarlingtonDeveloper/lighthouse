@@ -16,7 +16,6 @@ const STAGE_KEYS = [
   'qualification',
   'value',
   'architecture',
-  'storage',
 ] as const
 
 function initialStages(): Record<string, StageState> {

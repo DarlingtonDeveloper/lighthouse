@@ -16,7 +16,6 @@ const STAGE_LABELS: { key: string; label: string }[] = [
   { key: 'qualification', label: 'Qualifying prospect' },
   { key: 'value', label: 'Engineering value' },
   { key: 'architecture', label: 'Designing architecture' },
-  { key: 'storage', label: 'Storing in Cortex' },
 ]
 
 function StatusIcon({ status }: { status: StageState['status'] }) {
