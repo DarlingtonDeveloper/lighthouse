@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
+import { Geist, Geist_Mono } from 'next/font/google';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
+const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-mono' });
 
 export const metadata: Metadata = {
   title: 'Lighthouse',
@@ -16,9 +18,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={cn("font-sans", geist.variable)}>
-      <body className="bg-slate-950 text-slate-100 antialiased">
-        {children}
+    <html lang="en" className={cn('dark font-sans', geist.variable, geistMono.variable)}>
+      <body className="min-h-screen bg-background text-foreground antialiased">
+        <nav className="border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+          <div className="mx-auto flex h-14 max-w-7xl items-center px-6">
+            <Link href="/" className="text-lg font-semibold tracking-tight">
+              ◆ Lighthouse
+            </Link>
+          </div>
+        </nav>
+        <main className="mx-auto max-w-7xl px-6 py-8">
+          {children}
+        </main>
       </body>
     </html>
   );
