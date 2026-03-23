@@ -25,6 +25,11 @@ export default function RootLayout({
             <Link href="/" className="text-lg font-semibold tracking-tight">
               ◆ Lighthouse
             </Link>
+            <nav className="ml-8 flex items-center gap-6">
+              <Link href="/scout" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                Scout
+              </Link>
+            </nav>
           </div>
         </nav>
         <main className="mx-auto max-w-7xl px-6 py-8">

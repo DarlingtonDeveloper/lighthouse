@@ -2,6 +2,7 @@ import { generateObject } from "ai"
 import { google } from "@ai-sdk/google"
 import { QualificationSchema, type TechStack, type Qualification } from "@/lib/schemas"
 import type { PerformanceMetrics } from "@/lib/pagespeed"
+import { sanitiseForLLM } from "@/lib/sanitise"
 
 // ---------------------------------------------------------------------------
 // Careers-page scraper (best-effort)
@@ -42,7 +43,7 @@ async function scrapeCareersPage(domain: string): Promise<string> {
       const html = await response.text()
       if (html.trim().length === 0) continue
 
-      return html.slice(0, 20_000)
+      return sanitiseForLLM(html, 20_000)
     } catch {
       // Timeout, network error, etc. -- move to next URL.
       continue
