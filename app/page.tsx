@@ -6,6 +6,7 @@ import { UrlInput } from '@/components/url-input'
 import { ProspectCard } from '@/components/prospect-card'
 
 interface ProspectNode {
+  id?: string
   title: string
   body: string
   metadata?: Record<string, any>
@@ -86,7 +87,7 @@ export default function HomePage() {
         ) : (
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {sorted.map((prospect, idx) => (
-              <ProspectCard key={prospect.title ?? idx} prospect={prospect} />
+              <ProspectCard key={prospect.id ?? `${prospect.title}-${idx}`} prospect={prospect} />
             ))}
           </div>
         )}

@@ -1,6 +1,7 @@
 import { generateObject } from "ai"
 import { google } from "@ai-sdk/google"
 import { TechStackSchema, type TechStack } from "@/lib/schemas"
+import { sanitiseForLLM } from "@/lib/sanitise"
 
 /**
  * detectTechStack
@@ -17,7 +18,7 @@ export async function detectTechStack(
   domain: string,
 ): Promise<TechStack> {
   try {
-    const truncatedHtml = html.slice(0, 60_000)
+    const truncatedHtml = sanitiseForLLM(html)
 
     const { object } = await generateObject({
       model: google("gemini-2.5-pro"),
