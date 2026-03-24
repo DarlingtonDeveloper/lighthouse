@@ -18,7 +18,7 @@ export async function qualifyTier2(tier1: Tier1Result): Promise<Tier2Result> {
 
   try {
     const { object } = await generateObject({
-      model: google("gemini-2.5-flash-preview-05-20"),
+      model: google("gemini-2.5-flash"),
       schema: Tier2Schema,
       prompt: `You are a Vercel Sales Engineer qualifying a prospect from their website HTML.
 This is a quick assessment, not a deep analysis. Be accurate and concise.
