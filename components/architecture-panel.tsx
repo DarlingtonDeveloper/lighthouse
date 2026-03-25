@@ -16,30 +16,88 @@ interface ArchitecturePanelProps {
 /**
  * Sanitize LLM-generated Mermaid to fix common syntax errors.
  * Mermaid is strict — unescaped special chars in labels break parsing.
+ *
+ * Common LLM issues:
+ * - Parentheses inside [...] or {...} labels
+ * - Special chars: & < > # ; " inside any label
+ * - Node ID collisions with subgraph names
+ * - Markdown code fences wrapping the diagram
+ * - Round-node labels ((...)) with special chars inside
  */
+function cleanLabelContent(content: string): string {
+  return content
+    .replace(/&/g, "+")
+    .replace(/[<>]/g, "-")
+    .replace(/"/g, "'")
+    .replace(/#/g, "")
+    .replace(/;/g, ",")
+    .replace(/\(/g, "&#40;")
+    .replace(/\)/g, "&#41;")
+}
+
 function sanitizeMermaid(raw: string): string {
-  return raw
-    .split("\n")
+  const lines = raw.split("\n")
+  const subgraphNames = new Set<string>()
+
+  // First pass: collect subgraph names to detect collisions
+  for (const line of lines) {
+    const match = line.match(/^\s*subgraph\s+(.+)$/i)
+    if (match) subgraphNames.add(match[1].trim().replace(/["']/g, ""))
+  }
+
+  return lines
     .map((line) => {
-      // Strip markdown fences (```mermaid / ```)
+      // Strip markdown fences
       if (/^\s*```/.test(line)) return ""
-      // Fix labels with special chars inside [...] or (...)
-      // Replace problematic chars inside bracket labels: & < > # ; "
-      return line.replace(
-        /(\[|{)([^\]{}]+)(\]|})/g,
-        (_, open, content, close) => {
-          const cleaned = content
-            .replace(/&/g, "+")
-            .replace(/[<>]/g, "-")
-            .replace(/"/g, "'")
-            .replace(/#/g, "")
-            .replace(/;/g, ",")
-            // Parentheses inside labels break Mermaid — use unicode
-            .replace(/\(/g, "&#40;")
-            .replace(/\)/g, "&#41;")
-          return `${open}${cleaned}${close}`
+
+      // Fix subgraph titles — quote them to avoid keyword conflicts
+      const subgraphMatch = line.match(/^(\s*subgraph\s+)(.+)$/i)
+      if (subgraphMatch) {
+        const title = subgraphMatch[2].trim()
+        if (!/^["']/.test(title)) {
+          return `${subgraphMatch[1]}"${title.replace(/"/g, "'")}"`
+        }
+        return line
+      }
+
+      // Fix labels inside [...], {...}, ((...)), and (...)
+      // Handle [...] square bracket labels
+      let result = line.replace(
+        /(\[)([^\]]+)(\])/g,
+        (_, open, content, close) => `${open}${cleanLabelContent(content)}${close}`
+      )
+
+      // Handle {...} diamond/rhombus labels
+      result = result.replace(
+        /(\{)([^}]+)(\})/g,
+        (_, open, content, close) => `${open}${cleanLabelContent(content)}${close}`
+      )
+
+      // Handle ((...)) stadium/pill labels — double parens
+      result = result.replace(
+        /\(\(([^)]+)\)\)/g,
+        (_, content) => `((${cleanLabelContent(content)}))`
+      )
+
+      // Handle NodeID(Label) round nodes — match ID followed by (...) but NOT edge syntax like -->
+      // Pattern: word chars followed by ( content ) but not preceded by -
+      result = result.replace(
+        /(\w)((?:\()([^)]+)(?:\)))/g,
+        (match, before, _full, content) => {
+          // Skip if this looks like an edge label e.g. --|text|
+          if (/^-/.test(match)) return match
+          return `${before}(${cleanLabelContent(content)})`
         }
       )
+
+      // Fix node IDs that collide with subgraph names by prefixing
+      for (const name of subgraphNames) {
+        const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+        const idPattern = new RegExp(`^(\\s*)(${escaped})(\\[|\\(|\\{)`, "i")
+        result = result.replace(idPattern, `$1${name.replace(/\s/g, "")}Node$3`)
+      }
+
+      return result
     })
     .filter(Boolean)
     .join("\n")
