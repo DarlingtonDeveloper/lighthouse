@@ -1,0 +1,471 @@
+{
+  "run_at": "2026-04-05T20:49:36.486Z",
+  "model": "gemini-2.5-pro",
+  "total_sites": 11,
+  "sites_completed": 10,
+  "sites_errored": 1,
+  "overall_accuracy": 67.44186046511628,
+  "field_accuracy": {
+    "framework": {
+      "correct": 6,
+      "total": 7,
+      "pct": 85.71428571428571
+    },
+    "is_nextjs": {
+      "correct": 8,
+      "total": 10,
+      "pct": 80
+    },
+    "hosting": {
+      "correct": 1,
+      "total": 4,
+      "pct": 25
+    },
+    "is_vercel": {
+      "correct": 6,
+      "total": 10,
+      "pct": 60
+    },
+    "cms": {
+      "correct": 2,
+      "total": 5,
+      "pct": 40
+    },
+    "commerce": {
+      "correct": 6,
+      "total": 7,
+      "pct": 85.71428571428571
+    }
+  },
+  "calibration": {
+    "high": {
+      "correct": 8,
+      "total": 15,
+      "pct": 53.333333333333336
+    },
+    "medium": {
+      "correct": 0,
+      "total": 1,
+      "pct": 0
+    },
+    "low": {
+      "correct": 0,
+      "total": 0,
+      "pct": 0
+    }
+  },
+  "schema_pass_rate": 90.9090909090909,
+  "sites": [
+    {
+      "url": "https://vercel.com",
+      "domain": "vercel.com",
+      "source": "Vercel own site, public knowledge",
+      "fields": [
+        {
+          "field": "framework",
+          "expected": "Next.js",
+          "detected": "Next.js",
+          "correct": true,
+          "confidence": "high"
+        },
+        {
+          "field": "is_nextjs",
+          "expected": true,
+          "detected": true,
+          "correct": true,
+          "confidence": "n/a"
+        },
+        {
+          "field": "hosting",
+          "expected": "Vercel",
+          "detected": "Vercel",
+          "correct": true,
+          "confidence": "high"
+        },
+        {
+          "field": "is_vercel",
+          "expected": true,
+          "detected": true,
+          "correct": true,
+          "confidence": "n/a"
+        },
+        {
+          "field": "cms",
+          "expected": null,
+          "detected": "Contentful, Payload",
+          "correct": false,
+          "confidence": "high"
+        },
+        {
+          "field": "commerce",
+          "expected": null,
+          "detected": null,
+          "correct": true,
+          "confidence": "n/a"
+        }
+      ],
+      "accuracy": 83.33333333333334,
+      "schema_valid": true,
+      "detection_time_ms": 30029
+    },
+    {
+      "url": "https://linear.app",
+      "domain": "linear.app",
+      "source": "Vercel customer, public knowledge",
+      "fields": [
+        {
+          "field": "framework",
+          "expected": "Next.js",
+          "detected": "Next.js",
+          "correct": true,
+          "confidence": "high"
+        },
+        {
+          "field": "is_nextjs",
+          "expected": true,
+          "detected": true,
+          "correct": true,
+          "confidence": "n/a"
+        },
+        {
+          "field": "hosting",
+          "expected": "Vercel",
+          "detected": "Google Cloud Platform",
+          "correct": false,
+          "confidence": "medium"
+        },
+        {
+          "field": "is_vercel",
+          "expected": true,
+          "detected": false,
+          "correct": false,
+          "confidence": "n/a"
+        },
+        {
+          "field": "cms",
+          "expected": null,
+          "detected": "Sanity",
+          "correct": false,
+          "confidence": "high"
+        },
+        {
+          "field": "commerce",
+          "expected": null,
+          "detected": null,
+          "correct": true,
+          "confidence": "n/a"
+        }
+      ],
+      "accuracy": 50,
+      "schema_valid": true,
+      "detection_time_ms": 38123
+    },
+    {
+      "url": "https://cal.com",
+      "domain": "cal.com",
+      "source": "Open source repo (github.com/calcom/cal.com), Vercel customer",
+      "fields": [
+        {
+          "field": "framework",
+          "expected": "Next.js",
+          "detected": "Framer",
+          "correct": false,
+          "confidence": "high"
+        },
+        {
+          "field": "is_nextjs",
+          "expected": true,
+          "detected": false,
+          "correct": false,
+          "confidence": "n/a"
+        },
+        {
+          "field": "hosting",
+          "expected": "Vercel",
+          "detected": "Framer",
+          "correct": false,
+          "confidence": "high"
+        },
+        {
+          "field": "is_vercel",
+          "expected": true,
+          "detected": false,
+          "correct": false,
+          "confidence": "n/a"
+        },
+        {
+          "field": "cms",
+          "expected": null,
+          "detected": "Framer",
+          "correct": false,
+          "confidence": "high"
+        },
+        {
+          "field": "commerce",
+          "expected": null,
+          "detected": null,
+          "correct": true,
+          "confidence": "n/a"
+        }
+      ],
+      "accuracy": 16.666666666666664,
+      "schema_valid": true,
+      "detection_time_ms": 27973
+    },
+    {
+      "url": "https://hashnode.dev",
+      "domain": "hashnode.dev",
+      "source": "Vercel case study",
+      "fields": [
+        {
+          "field": "framework",
+          "expected": "Next.js",
+          "detected": "Next.js",
+          "correct": true,
+          "confidence": "high"
+        },
+        {
+          "field": "is_nextjs",
+          "expected": true,
+          "detected": true,
+          "correct": true,
+          "confidence": "n/a"
+        },
+        {
+          "field": "hosting",
+          "expected": "Vercel",
+          "detected": "Render",
+          "correct": false,
+          "confidence": "high"
+        },
+        {
+          "field": "is_vercel",
+          "expected": true,
+          "detected": false,
+          "correct": false,
+          "confidence": "n/a"
+        }
+      ],
+      "accuracy": 50,
+      "schema_valid": true,
+      "detection_time_ms": 29293
+    },
+    {
+      "url": "https://www.target.com",
+      "domain": "target.com",
+      "source": "Public tech talks, BuiltWith data - Next.js on Akamai/AWS",
+      "fields": [
+        {
+          "field": "framework",
+          "expected": "Next.js",
+          "detected": "Next.js",
+          "correct": true,
+          "confidence": "high"
+        },
+        {
+          "field": "is_nextjs",
+          "expected": true,
+          "detected": true,
+          "correct": true,
+          "confidence": "n/a"
+        },
+        {
+          "field": "is_vercel",
+          "expected": false,
+          "detected": false,
+          "correct": true,
+          "confidence": "n/a"
+        },
+        {
+          "field": "commerce",
+          "expected": null,
+          "detected": "Custom/In-house",
+          "correct": false,
+          "confidence": "high"
+        }
+      ],
+      "accuracy": 75,
+      "schema_valid": true,
+      "detection_time_ms": 33885
+    },
+    {
+      "url": "https://www.hulu.com",
+      "domain": "hulu.com",
+      "source": "BuiltWith, Wappalyzer - React SPA on AWS",
+      "fields": [
+        {
+          "field": "is_nextjs",
+          "expected": false,
+          "detected": true,
+          "correct": false,
+          "confidence": "n/a"
+        },
+        {
+          "field": "is_vercel",
+          "expected": false,
+          "detected": false,
+          "correct": true,
+          "confidence": "n/a"
+        }
+      ],
+      "accuracy": 50,
+      "schema_valid": true,
+      "detection_time_ms": 29141
+    },
+    {
+      "url": "https://nuxt.com",
+      "domain": "nuxt.com",
+      "source": "Nuxt official site, built with Nuxt 3, hosted on CloudFlare/NuxtHub",
+      "fields": [
+        {
+          "field": "framework",
+          "expected": "Nuxt",
+          "detected": "Nuxt",
+          "correct": true,
+          "confidence": "high"
+        },
+        {
+          "field": "is_nextjs",
+          "expected": false,
+          "detected": false,
+          "correct": true,
+          "confidence": "n/a"
+        },
+        {
+          "field": "is_vercel",
+          "expected": false,
+          "detected": true,
+          "correct": false,
+          "confidence": "n/a"
+        },
+        {
+          "field": "cms",
+          "expected": null,
+          "detected": null,
+          "correct": true,
+          "confidence": "n/a"
+        },
+        {
+          "field": "commerce",
+          "expected": null,
+          "detected": null,
+          "correct": true,
+          "confidence": "n/a"
+        }
+      ],
+      "accuracy": 80,
+      "schema_valid": true,
+      "detection_time_ms": 22961
+    },
+    {
+      "url": "https://angular.dev",
+      "domain": "angular.dev",
+      "source": "Angular official docs site, built with Angular",
+      "fields": [
+        {
+          "field": "framework",
+          "expected": "Angular",
+          "detected": "Angular",
+          "correct": true,
+          "confidence": "high"
+        },
+        {
+          "field": "is_nextjs",
+          "expected": false,
+          "detected": false,
+          "correct": true,
+          "confidence": "n/a"
+        },
+        {
+          "field": "is_vercel",
+          "expected": false,
+          "detected": false,
+          "correct": true,
+          "confidence": "n/a"
+        },
+        {
+          "field": "cms",
+          "expected": null,
+          "detected": null,
+          "correct": true,
+          "confidence": "n/a"
+        },
+        {
+          "field": "commerce",
+          "expected": null,
+          "detected": null,
+          "correct": true,
+          "confidence": "n/a"
+        }
+      ],
+      "accuracy": 100,
+      "schema_valid": true,
+      "detection_time_ms": 26187
+    },
+    {
+      "url": "https://wordpress.org",
+      "domain": "wordpress.org",
+      "source": "WordPress official site, PHP/WordPress stack",
+      "fields": [
+        {
+          "field": "is_nextjs",
+          "expected": false,
+          "detected": false,
+          "correct": true,
+          "confidence": "n/a"
+        },
+        {
+          "field": "is_vercel",
+          "expected": false,
+          "detected": false,
+          "correct": true,
+          "confidence": "n/a"
+        }
+      ],
+      "accuracy": 100,
+      "schema_valid": true,
+      "detection_time_ms": 30488
+    },
+    {
+      "url": "https://www.allbirds.com",
+      "domain": "allbirds.com",
+      "source": "Known Shopify Plus customer, BuiltWith data",
+      "fields": [
+        {
+          "field": "is_nextjs",
+          "expected": false,
+          "detected": false,
+          "correct": true,
+          "confidence": "n/a"
+        },
+        {
+          "field": "is_vercel",
+          "expected": false,
+          "detected": false,
+          "correct": true,
+          "confidence": "n/a"
+        },
+        {
+          "field": "commerce",
+          "expected": "Shopify",
+          "detected": "Shopify",
+          "correct": true,
+          "confidence": "high"
+        }
+      ],
+      "accuracy": 100,
+      "schema_valid": true,
+      "detection_time_ms": 31799
+    },
+    {
+      "url": "https://example.com",
+      "domain": "example.com",
+      "source": "IANA example domain, known static HTML page",
+      "fields": [],
+      "accuracy": 0,
+      "schema_valid": false,
+      "detection_time_ms": 135,
+      "error": "fetchPage returned empty HTML"
+    }
+  ]
+}
